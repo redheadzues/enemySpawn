@@ -23,10 +23,7 @@ public class Enemy : MonoBehaviour
     {
         while(_spawnTime > 0)
         {
-
-            Debug.Log(_runningTime);
             _runningTime += Time.deltaTime;
-            Debug.Log(_runningTime);
 
             if (_runningTime > _spawnTime)
             {

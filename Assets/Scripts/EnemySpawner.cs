@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
-{
-    [SerializeField] private GameObject _enemy;
+{    
     [SerializeField] private float _spawnTime;
 
+    private Enemy _enemy;
     private Transform[] _spawnPoints;
     private float _runningTime;
 

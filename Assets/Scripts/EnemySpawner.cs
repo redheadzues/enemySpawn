@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {    
     [SerializeField] private float _spawnTime;
+    [SerializeField] private Enemy _enemy;
 
-    private Enemy _enemy;
     private Transform[] _spawnPoints;
     private float _runningTime;
 
@@ -23,18 +23,13 @@ public class EnemySpawner : MonoBehaviour
     {
         while(_spawnTime > 0)
         {
-            _runningTime += Time.deltaTime;
+            Transform spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
 
-            if (_runningTime > _spawnTime)
-            {
-                Transform spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
+            Instantiate(_enemy, spawnPoint.position, Quaternion.identity);
 
-                Instantiate(_enemy, spawnPoint.position, Quaternion.identity);
+            var waitingTime = new WaitForSeconds(_spawnTime);
 
-                _runningTime = 0;
-            }
-
-            yield return null;
+            yield return waitingTime;
         }
     }
 }
